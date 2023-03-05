@@ -1,0 +1,27 @@
+<table class="table table-bordered mt-5">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Pincode</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @employees.each do |employee| %>
+            <tr>
+                <%# <td><%= employee.first_name%> <%= employee.middle_name %> <%= employee.last_name %></td> %>
+                <td><%= "#{employee.first_name} #{employee.last_name}"</td>   %>
+                <td><%= employee.email %></td>
+                <td><%= employee.city %></td>
+                <td><%= employee.state %></td>
+                <td><%= employee.country %></td>
+                <td><%= employee.pincode %></td>
+                <td><%= employee.address %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
