@@ -5,9 +5,10 @@ class Employee < ApplicationRecord
 
     # validates :middle_name, allow_blank: true,presence: true
 
-    validates :first_name, :last_name,:dob, presence: true
+    validates :first_name, presence: true
     validates :email, presence: true, uniqueness: true
     validates :city, :state, :country, :pincode, :address, presence: true
+    validate :check_age
 
     def name 
         "#{first_name} #{middle_name} #{last_name}".strip
@@ -16,13 +17,16 @@ class Employee < ApplicationRecord
     def full_address
         "#{address} #{city}, #{state}, #{country}, #{pincode}".strip
     end
-
-
-
+    
     private
     def calculate_age
         self.age = Date.today.year - dob.year
     end
-
-
+    def check_age
+        if(!dob)
+            self.errors.add(:dob," can't be blank.")
+        elsif(Date.today.year - dob.year)<=18
+            self.errors.add(:dob," must be greater than 18.")
+        end 
+    end
 end

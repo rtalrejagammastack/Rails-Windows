@@ -14,6 +14,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th>Age</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                     <td><%= employee.name %> </td>
                     <td><%= employee.email %></td>
                     <td><%= employee.full_address %></td>
+                    <td><%= employee.age %></td>
                     <td>
                         <%= link_to "Edit",edit_employee_path(employee),class:"btn btn-primary" %>
                         <%= link_to "View",employee_path(employee),class:"btn btn-info" %>

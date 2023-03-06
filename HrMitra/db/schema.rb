@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2023_03_06_125244) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "dob"
+    t.date "dob"
     t.integer "age"
   end
 

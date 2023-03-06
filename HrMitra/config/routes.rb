@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
   
-  resources :employees
-  resources :documents
+  resources :employees do
+    resources :documents
+  end
 
   # Public pages routes
   get 'about-us' => 'pages#about_us'
