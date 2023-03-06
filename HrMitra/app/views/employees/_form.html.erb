@@ -48,11 +48,21 @@
             </div>
         </div>
 
-        <div class="col-lg-8">
+        <div class="col-lg-5">
             <div class="form-group">
                 <%= form.label :address,class: 'mb-2' %>
                 <%= form.text_field :address,class:'form-control form-control-lg' %>
                 <% employee.errors.full_messages_for(:address).each do |message| %>
+                    <p class="text-danger"> <%= message %> </p>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="form-group">
+                <%= form.label :dob,class: 'mb-2' %>
+                <%= form.date_field :dob,class:'form-control form-control-lg' %>
+                <% employee.errors.full_messages_for(:dob).each do |message| %>
                     <p class="text-danger"> <%= message %> </p>
                 <% end %>
             </div>
