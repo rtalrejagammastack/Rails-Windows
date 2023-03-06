@@ -9,6 +9,7 @@ class Employee < ApplicationRecord
     validates :email, presence: true, uniqueness: true
     validates :city, :state, :country, :pincode, :address, presence: true
     validate :check_age
+    validates :pincode, pincode_six_length: true
 
     def name 
         "#{first_name} #{middle_name} #{last_name}".strip

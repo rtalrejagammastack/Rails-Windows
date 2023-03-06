@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_06_125244) do
+ActiveRecord::Schema.define(version: 2023_03_06_180754) do
 
   create_table "documents", force: :cascade do |t|
     t.string "name"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2023_03_06_125244) do
     t.string "city"
     t.string "state"
     t.string "country"
-    t.string "pincode"
+    t.integer "pincode"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
