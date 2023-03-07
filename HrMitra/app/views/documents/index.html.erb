@@ -14,6 +14,7 @@
                 <th>Name</th>
                 <th>Doc Type</th>
                 <th>Employee</th>
+                <th>Employee ID</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,10 +24,11 @@
                     <td><%= document.name %> </td>
                     <td><%= document.doc_type %></td>
                     <td><%= document.employee.name %></td>
+                    <td><%= document.employee.id %></td>
                     <td>
                         <%= link_to "Edit",edit_document_path(document),class:"btn btn-primary" %>
                         <%= link_to "View",document_path(document),class:"btn btn-info" %>
-                        <%= link_to "Destroy",employee_path(document), method: :delete,class:"btn btn-danger", data: {
+                        <%= link_to "Destroy",document_path(document), method: :delete,class:"btn btn-danger", data: {
                             confirm: 'Are you sure to delete this document?'
                         } %>
                     </td>

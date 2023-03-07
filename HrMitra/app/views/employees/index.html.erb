@@ -29,8 +29,9 @@
                         <%= link_to "Edit",edit_employee_path(employee),class:"btn btn-primary" %>
                         <%= link_to "View",employee_path(employee),class:"btn btn-info" %>
                         <%= link_to "Destroy",employee_path(employee), method: :delete,class:"btn btn-danger", data: {
-                            confirm: 'Are you sure to delete this employee?'
+                            confirm: 'Are you sure to delete this employee and all of its documents?'
                         } %>
+                        <%= link_to "Documents",documents_path(employee.documents),class:"btn btn-primary" %> 
                     </td>
                 </tr>
             <% end %>

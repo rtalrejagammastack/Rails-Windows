@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+
+    http_basic_authenticate_with name: "dhh", password: "secret"
     before_action :set_employee, only: [:edit,:show,:update,:destroy]
     def index
         @employees = Employee.all

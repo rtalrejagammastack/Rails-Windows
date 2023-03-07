@@ -1,15 +1,15 @@
 class Employee < ApplicationRecord
     before_save :calculate_age
 
-    has_many :documents
+    has_many :documents, dependent: :destroy
 
     # validates :middle_name, allow_blank: true,presence: true
 
     validates :first_name, presence: true
     validates :email, presence: true, uniqueness: true
-    validates :city, :state, :country, :pincode, :address, presence: true
+    validates :city, :state, :country, :address, presence: true
     validate :check_age
-    validates :pincode, pincode_six_length: true
+    validates :pincode, presence: true, pincode_six_length: true
 
     def name 
         "#{first_name} #{middle_name} #{last_name}".strip
@@ -17,6 +17,10 @@ class Employee < ApplicationRecord
 
     def full_address
         "#{address} #{city}, #{state}, #{country}, #{pincode}".strip
+    end
+
+    def name_with_email
+        "#{name}(#{email})"
     end
     
     private

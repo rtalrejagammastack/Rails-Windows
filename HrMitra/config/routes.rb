@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'employees#index'
   
-  resources :employees do
-    resources :documents
-  end
+  resources :employees
+  resources :documents
+  
 
   # Public pages routes
-  get 'about-us' => 'pages#about_us'
-  get 'contact-us' => 'pages#contact_us'
-  get 'privacy-policy' => 'pages#privacy_policy'
-  get 'terms-and-conditions' => 'pages#terms_and_conditions'
+  # get 'about-us' => 'pages#about_us'
+  # get 'contact-us' => 'pages#contact_us'
+  # get 'privacy-policy' => 'pages#privacy_policy'
+  # get 'terms-and-conditions' => 'pages#terms_and_conditions'
 end
