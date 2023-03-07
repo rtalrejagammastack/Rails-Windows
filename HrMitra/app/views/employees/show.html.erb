@@ -22,30 +22,33 @@
                     <p class="lead"><strong>Documents: </strong><%= @employee.documents.length %></p>
                 </div>
             </div>
-                
-            <div class="row mt-5">
-                 <h2 class="text-center">Employee Documents</h2>
-                 <% @employee.documents.each do |document| %>
-                    <div class ="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <% if document.image.attached? %>
+            
+            <% if @employee.documents.present? %>
+
+                <div class="row mt-5">
+                    <h2 class="text-center">Employee Documents</h2>
+                    <% @employee.documents.each do |document| %>
+                        <div class ="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <% if document.image.attached? %>
+                                        <div class="col-lg-4">
+                                            <%= image_tag document.image ,class:'img-fluid' %>
+                                        </div>
+                                    <% end %>
                                     <div class="col-lg-4">
-                                        <%= image_tag document.image ,class:'img-fluid' %>
-                                    <div>
-                                <% end %>
-                                <div class="col-lg-4">
-                                    <p class="lead"><%= document.name %> </p>
-                                <div>
-                                <div class="col-lg-4">
-                                    <p class="lead"><%= document.doc_type %></p>
-                                <div>
+                                        <p class="lead"><%= document.name %> </p>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <p class="lead"><%= document.doc_type %></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                 <% end %>
-            </div>
+                    <% end %> 
+                </div>
 
+            <% end %>
             <%= link_to "Back to Employees",employees_path,class: "btn btn-outline-primary btn-lg" %>
             <%= link_to "View Documents",documents_path(@employee.documents),class: "btn btn-outline-primary btn-lg" %>
             <%= link_to "Edit Employee",edit_employee_path(@employee),class: "btn btn-primary btn-lg" %>
