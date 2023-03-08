@@ -1,0 +1,14 @@
+<br>
+<br>
+<br>
+<%= flash[:notice] %>
+<br>
+
+<% if current_user %>
+    Logged in as <%= current_user.email %> and <%= current_user.name %>
+    <%= link_to "Log Out", log_out_path %>
+
+    <%= link_to "Want to Join a Game", join_game_path %>
+<% else %>  
+    <%= render 'shared/login' %>
+<% end %> 

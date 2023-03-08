@@ -1,0 +1,17 @@
+<%= link_to "New Room",new_room_path %>
+
+<h1>Rooms</h1>
+<br>
+<%# <h2> You can join room that has less than 4 members and is in waiting lobby.</h2> %>
+<% @rooms.each do |room| %>
+    <div>
+        <h2><%= room.name %></h2>
+        <% room.players.each do |player| %>
+            <p><%= player.name %></p>
+        <% end  %>
+        <% if room.players.length != 4 %>            
+            <%= link_to "Join Room", join_room_path(room), method: :post %>
+        <% end %>
+    </div>
+    <br>
+<% end %>

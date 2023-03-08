@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'home#index'
+
+  post '/user' => 'home#create'
+  get 'log_out' => 'home#destroy' , as: 'log_out'
+
+  get 'join_game' => 'games#index' , as: 'join_game'
 end

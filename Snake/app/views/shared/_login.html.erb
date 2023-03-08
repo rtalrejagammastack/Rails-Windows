@@ -1,0 +1,14 @@
+<h1>User</h1>   
+<%= form_with url:'/user', method:'post' do |form| %>   
+    <div>   
+        <%= form.label :email %><br><br>   
+        <%= form.text_field :email %><br><br>
+    </div>   
+    <div>   
+        <%= form.label :name %><br><br>   
+        <%= form.text_field :name %><br><br>   
+    </div>   
+    <div>   
+        <%= form.submit "Next" %>   
+    </div>   
+<% end %>
