@@ -22,6 +22,9 @@ not work: rails g migration change_columnname_to_newdatatype_in_table_name colum
 or 
 rails g migration change_pincode_to_integer_in_employees
 change_column :employees, :pincode, :integer
+This should not be use as this makes our migration irreversible so
+Use up and down method for changing column datatype
+up for migrate and down for rollback
 
 -> Rename column_name
 rails g migration rename_dob_to_dateofbirth_in_employees
@@ -37,15 +40,20 @@ end
 rails g migration remove_middle_name_from_employees middle_name:string
 Or 
 remove_column :employees,:middle_name
-
-If type not given in both cases then we can't rollback 
+If type not given in both cases then we can't rollback and this migration becomes irreversible
 
 -> Rename Existing Column
 rails g migration rename_employee_bio_attr
 rename_column :employees,:bio,:about
 rename_column :table_name,:old_column_name,:new_column_name 
 
-----> Unable to rollback while changing column datatype after migration
+-------------------------------------------------
+Sites
+https://tosbourn.com/rails-migrate-change-column-type/
+https://dev.to/sylwiavargas/rails-custom-validations-58mo
+https://fullstackheroes.com/tutorials/rails/column-types/
+
+
 ----> calculate_age and check_age....can we convert it into 1 method
 ----> self.errors.add(:date_of_joining,"must be greater than todays date.") custom message
-----> documents single employee 
+----> handle route for documents of single employee 
