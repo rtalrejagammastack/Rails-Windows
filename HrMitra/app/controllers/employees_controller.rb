@@ -33,11 +33,14 @@ class EmployeesController < ApplicationController
             redirect_to employees_path,notice: 'Employee has been deleted successfully.'
         end
     end
+    def document
+        @employee = Employee.find(params[:id])
+    end
 
     private
         def employee_params
                # params.require(:employee).permit!
-            params.require(:employee).permit(:first_name, :middle_name, :last_name, :email, :address, :city, :state, :pincode, :country,:dob)
+            params.require(:employee).permit(:first_name, :middle_name, :last_name, :email, :address, :city, :state, :pincode, :country,:date_of_birth,:date_of_joining,:bio,:job_title)
         end
         
         def set_employee

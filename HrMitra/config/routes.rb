@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :documents
   
+  get 'employee/:id/document' => 'employees#document', as: 'employee_document'
 
   # Public pages routes
   # get 'about-us' => 'pages#about_us'

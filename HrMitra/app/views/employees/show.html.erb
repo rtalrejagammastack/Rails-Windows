@@ -9,8 +9,12 @@
                     <p class="lead"><strong>Middle Name: </strong><%= @employee.middle_name.present? ? @employee.middle_name : '--NA--' %></p>
                     <p class="lead"><strong>Last Name: </strong><%= @employee.last_name %></p>
                     <p class="lead"><strong>Personal Email: </strong><%= @employee.email %></p>
+                    <p class="lead"><strong>Date Of Birth: </strong><%= @employee.date_of_birth %></p>
                     <p class="lead"><strong>Age: </strong><%= @employee.age %></p>
-                    <p class="lead"><strong>Date Of Birth: </strong><%= @employee.dob %></p>
+                    <p class="lead"><strong>Current Age: </strong><%= @employee.age %></p>
+                    <% if @employee.bio.present? %>
+                        <p class="lead"><strong>Bio: </strong><%= @employee.bio %></p>
+                    <% end %>
                 </div>
                 <div class="col-lg-6">
                     <h3 class="mb-3">Address Information</h3>
@@ -19,38 +23,17 @@
                     <p class="lead"><strong>State: </strong><%= @employee.state %></p>
                     <p class="lead"><strong>Country: </strong><%= @employee.country %></p>
                     <p class="lead"><strong>Pin Code: </strong><%= @employee.pincode %></p>
-                    <p class="lead"><strong>Documents: </strong><%= @employee.documents.length %></p>
+                </div><br><br><br>
+                <div class="col-lg-6">
+                    <h3 class="mb-3">Job Information</h3>
+                    <p class="lead"><strong>Job Title: </strong><%= @employee.job_title %></p>
+                    <p class="lead"><strong>Date Of Joining: </strong><%= @employee.date_of_joining %></p>
                 </div>
             </div>
-            
-            <% if @employee.documents.present? %>
+                
+            <%= render 'document', employee: @employee,title:'Employee' %>
 
-                <div class="row mt-5">
-                    <h2 class="text-center">Employee Documents</h2>
-                    <% @employee.documents.each do |document| %>
-                        <div class ="card mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <% if document.image.attached? %>
-                                        <div class="col-lg-4">
-                                            <%= image_tag document.image ,class:'img-fluid' %>
-                                        </div>
-                                    <% end %>
-                                    <div class="col-lg-4">
-                                        <p class="lead"><%= document.name %> </p>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <p class="lead"><%= document.doc_type %></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <% end %> 
-                </div>
-
-            <% end %>
             <%= link_to "Back to Employees",employees_path,class: "btn btn-outline-primary btn-lg" %>
-            <%= link_to "View Documents",documents_path(@employee.documents),class: "btn btn-outline-primary btn-lg" %>
             <%= link_to "Edit Employee",edit_employee_path(@employee),class: "btn btn-primary btn-lg" %>
         </div>
     </div>

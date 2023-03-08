@@ -11,11 +11,11 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Age</th>
-                <th>Actions</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Address</th>
+                <th class="text-center">Current Age</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -24,14 +24,14 @@
                     <td><%= employee.name %> </td>
                     <td><%= employee.email %></td>
                     <td><%= employee.full_address %></td>
-                    <td><%= employee.age %></td>
+                    <td><%= employee.current_age %></td>
                     <td>
-                        <%= link_to "Edit",edit_employee_path(employee),class:"btn btn-primary" %>
-                        <%= link_to "View",employee_path(employee),class:"btn btn-info" %>
-                        <%= link_to "Destroy",employee_path(employee), method: :delete,class:"btn btn-danger", data: {
+                        <%= link_to "Edit",edit_employee_path(employee),class:"btn btn-primary btn-lg" %>
+                        <%= link_to "View",employee_path(employee),class:"btn btn-info btn-lg" %>
+                        <%= link_to "Destroy",employee_path(employee), method: :delete,class:"btn btn-danger btn-lg", data: {
                             confirm: 'Are you sure to delete this employee and all of its documents?'
                         } %>
-                        <%= link_to "Documents",documents_path(employee.documents),class:"btn btn-primary" %> 
+                        <%= link_to "Documents",employee_document_path(employee),class:"btn btn-primary btn-lg" %> 
                     </td>
                 </tr>
             <% end %>

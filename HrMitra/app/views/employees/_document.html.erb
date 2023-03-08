@@ -1,0 +1,33 @@
+<% if employee.documents.present? %>
+
+    <div class="row mt-5">
+        <h2 class="text-center"><%= title %> Documents </h2>
+        <p class="lead"><strong>Count : </strong><%= employee.documents.length %></p>
+        <% employee.documents.each do |document| %>
+            <div class ="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <% if document.image.attached? %>
+                            <div class="col-lg-4">
+                                <%= image_tag document.image ,class:'img-fluid' %>
+                            </div>
+                        <% else  %>
+                            <div class="col-lg-4">
+                                <%= image_tag 'default_image.png' ,class:'img-fluid' %>
+                            </div>
+                        <% end %>
+                        <div class="col-lg-4">
+                            <p class="lead"><%= document.name %> </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="lead"><%= document.doc_type %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %> 
+    </div>
+<% else %>
+    <br>
+    <h2 class="text-center mt-3 mb-3">No Documents Present </h2>
+<% end %>
