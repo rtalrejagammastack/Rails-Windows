@@ -1,1 +1,10 @@
-<%= render 'document', employee: @employee,title: @employee.name %>
+<div class ="col-lg-12">
+    <div class="card rounded-0 mt-5 mb-5">
+        <div class="card-body">                
+            <%= render 'document', employee: @employee,title: @employee.name %>
+
+            <%= link_to "View Employee",employee_path(@employee),class: "btn btn-primary btn-lg" %>
+            <%= link_to "Back to Employees",employees_path,class: "btn btn-outline-primary btn-lg" %>
+        </div>
+    </div>
+</div>

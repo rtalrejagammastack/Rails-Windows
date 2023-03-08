@@ -7,7 +7,7 @@ class Employee < ApplicationRecord
 
     validates :first_name,:last_name, presence: true
     validates :job_title, presence: true
-    validates :email, presence: true, uniqueness: true
+    validates :email, presence: true, uniqueness: true,format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
     validates :city, :state, :country, :address, presence: true
     validate :check_age
     validate :check_joining_date
