@@ -4,9 +4,6 @@ class ApplicationController < ActionController::Base
     private
 
         def set_current_user
-              puts '*****************************************'
-              puts session[:user_id],session[:room_id]
-              puts '*****************************************'
            @current_user =  User.find_by(id: session[:user_id])
         end 
 

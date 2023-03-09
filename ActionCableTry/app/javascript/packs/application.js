@@ -13,6 +13,15 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+import roomChannel from "../channels/room_channel";
+
 $(document).on('turbolinks:load', function () {
-    // alert("We made it!");
+  $("form").on('submit', function(e){
+    e.preventDefault();
+    let message = $('#message').val();
+    if (message.length > 0) {
+      roomChannel.speak(message);
+      $('#message').val('')
+    }
+  });
 })
