@@ -3,6 +3,7 @@ import consumer from "./consumer"
 consumer.subscriptions.create("GameChannel", {
   connected() {
     console.log("Connected to the chat room!");
+
     // Called when the subscription is ready for use on the server
   },
 
@@ -11,6 +12,7 @@ consumer.subscriptions.create("GameChannel", {
   },
 
   received(data) {
+    console.log(data)
     // Called when there's incoming data on the websocket for this channel
   }
 });

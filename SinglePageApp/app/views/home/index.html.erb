@@ -1,0 +1,22 @@
+
+<br>
+<br>
+<button onclick="joinRoom(<%= @room.id %>)">Join Room</button>
+<%= action_cable_meta_tag %>
+<script>
+  function joinRoom(roomId) {
+    const cable = consumer();
+    
+    const room = cable.subscriptions.create(
+      {
+        channel: "RoomChannel",
+        room_id: roomId
+      },
+      {
+        received: function(data) {
+          console.log(data);
+        }
+      }
+    );
+  }
+</script>

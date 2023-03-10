@@ -10,8 +10,25 @@
             <p><%= player.name %></p>
         <% end  %>
         <% if room.players.length != 4 %>            
-            <%= link_to "Join Room", join_room_path(room), method: :post %>
+            <%#= link_to "Join Room", join_room_path(room), method: :post %>
+            <button onclick="joinRoom(<%= room.id %>)">Join Room</button>
         <% end %>
     </div>
     <br>
 <% end %>
+
+<%# <script>
+  function joinRoom(roomId) {
+    App.room = App.cable.subscriptions.create(
+      {
+        channel: "GameChannel",
+        room_id: roomId
+      },
+      {
+        received: function(data) {
+          console.log(data);
+        }
+      }
+    );
+  }
+</script> %>

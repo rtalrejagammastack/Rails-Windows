@@ -25,8 +25,6 @@ class RoomsController < ApplicationController
     def join
         @room = Room.find(params[:id])
         if @room.players.length < 4
-            puts '###########################33'
-            puts @room,current_user
             @room.players.create(name:current_user.name)
             puts @room.players.length
             session[:room_id] = @room.id
