@@ -1,0 +1,5 @@
+<% if current_user %>
+    <h1 class="text-center">
+        <%= link_to "Log out", user_path(current_user.id),method: :delete %>
+    </h1>
+<% end %>

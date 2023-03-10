@@ -1,0 +1,18 @@
+<h1 class='text-center'><%= @room.name %></h1>
+
+<br>
+<% @room.players.each do |player| %>
+  <p><%= player.name %></p>
+<% end %>
+
+<% if @room.players.length > 1 %>
+    <%= link_to "Start Game", start_room_path(@room), method: :post %>
+<% end %>
+
+<br>
+<% if @room.players.length==1 %>
+    <%= link_to "Destroy Room",room_path,method: :delete %>
+<% else %>
+    <%= link_to "Leave",leave_rooms_path,method: :delete %>
+<% end  %>
+

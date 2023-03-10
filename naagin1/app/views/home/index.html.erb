@@ -1,0 +1,44 @@
+<br>
+<br>
+<br>
+<div id="input_name">
+    <%= form_with url: '/name',remote: true do |form|%>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+        <%= form.submit "Submit", :onclick => "hide_name()" %>
+    <% end  %>
+</div>
+
+<div id="users">
+
+</div>
+
+<div id="start">
+    <%= link_to "Start", '/start',remote: true, :onclick => "startGame()"%>
+</div>
+
+<div id="snake" style='display:none'>
+    MY Snake Ladders
+</div>
+
+<script>
+    hide_name = () => {
+        document.getElementById('input_name').style.display = "none"
+    }
+
+    startGame = () => {
+        setTimeout(()=>{
+            document.getElementById('snake');
+        snake.style.display = 'block';
+        }, 2*1000)
+    }
+</script>
+
+
+<%# <script>
+    paintIt = (element, backgroundColor, textColor) => {
+        element.style.backgroundColor = backgroundColor
+        // if textColor!=null
+            // element.style.color = textColor
+    }
+</script> %>

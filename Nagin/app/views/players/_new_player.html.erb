@@ -1,0 +1,8 @@
+<h2>Create a player</h2>
+
+<%= form_with(model: [current_room, Player.new], url: room_players_path(current_room)) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.submit "Create Player" %>
+<% end %>
