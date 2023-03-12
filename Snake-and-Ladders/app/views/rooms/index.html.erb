@@ -1,0 +1,40 @@
+<%= link_to "New Room",new_room_path %>
+<h1>Rooms</h1>
+<br>
+<h2> You can join room that has less than 4 members and is in waiting lobby.</h2>
+<br>
+<% @rooms.each do |room| %>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h2 class="card-title"><%= room.name %></h2>
+            <h5 class="card-title text-right"><%= room.status %></h5>
+            <% room.players.each do |player| %>
+                <p class="card-text"><%= player.user.name %></p>
+            <% end  %>
+            <% if room.players.length != 4 %>            
+                <%= link_to "Join Room", room_join_path(room), method: :post,remote: true,:onclick => "joinRoom(8)"  %>
+                <button onclick="joinRoom(<%= room.id %>)" class="btn btn-primary">Join Room</button>
+            <% end %>
+        </div>
+    </div>
+    <br>
+<% end %>
+
+<script>
+  function joinRoom(room) {
+    // document.addEventListener("DOMContentLoaded", () => {
+    // createRoomChannel(room)
+//   })
+    // App.room = App.cable.subscriptions.create(
+    //   {
+    //     channel: "GameChannel",
+    //     room_id: roomId
+    //   },
+    //   {
+    //     received: function(data) {
+    //       console.log(data);
+    //     }
+    //   }
+    // );
+  }
+</script>

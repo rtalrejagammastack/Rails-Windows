@@ -1,0 +1,19 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#game-board {
+    width: 640px;
+    height: 640px;
+ }
+ .row{
+    display: flex;
+    flex-direction: row;
+ }
+ .square{
+    flex-basis: 10%;
+    border: 1px solid black;
+ }
+ .odd{
+    flex-direction: row-reverse;
+ }

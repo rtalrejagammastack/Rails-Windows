@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
         def set_count_members
             @count = ActionCable.server.connections.display
-            debugger
+            # debugger
         end
 
         def current_members
