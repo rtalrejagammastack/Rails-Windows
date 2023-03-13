@@ -13,7 +13,15 @@
  .square{
     flex-basis: 10%;
     border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    justify-content: center;
+   align-items: center;
+   display: flex;
  }
  .odd{
     flex-direction: row-reverse;
+ }
+ #dice-btn{
+   display: block;
  }

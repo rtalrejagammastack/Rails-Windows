@@ -60,6 +60,7 @@ class RoomsController < ApplicationController
     def start
         @room = Room.find(params[:room_id])
         @room.update(status:"playing")
+        
     end
     def wait
         @room = Room.find(params[:room_id])

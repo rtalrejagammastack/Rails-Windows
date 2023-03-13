@@ -21,6 +21,7 @@ class Room < ApplicationRecord
             if status == 'playing'
                 ActionCable.server.broadcast "room_channel_#{id}", {
                     type: "start_game",
+                    chance: players.first.user
                 }
             else
                 ActionCable.server.broadcast "room_channel_#{id}", {

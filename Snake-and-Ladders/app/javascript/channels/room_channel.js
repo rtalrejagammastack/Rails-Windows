@@ -20,11 +20,11 @@ const createRoomChannel = (roomId) => {
           remove_player(data.user.id)
           break;
         case "start_game":
-          start_game()
+          start_game(data.chance)
           break;
-          case "stop_game":
+        case "stop_game":
             stop_game()
-            break;
+        break;
         default:
           console.log("Default") 
       }
@@ -44,7 +44,7 @@ const add_player=(player_name , player_id)=>{
 
 const remove_player = (player_id)=>{
   const div = document.getElementById("players");
-
+  console.log(div.children.length);
   for(let i=0;i<div.children.length;i++){
     const child = div.children[i];
 
@@ -59,8 +59,40 @@ const stop_game = () =>{
   document.getElementById('game').style.display="none";
     
 }
-const start_game = () =>{
-  document.getElementById('game').style.display="block";
+const start_game = (user) =>{
+  const dice = document.getElementById('dice-btn')
+  const p = document.createElement('p');
+  p.innerText = user.name
+  const but = document.createElement('button');
+  but.innerText = 0;
+
+  but.addEventListener('onClick',()=>{
+    
+  })
+
+  dice.appendChild(p)
+  dice.appendChild(but);
+
+
+  const div   = document.getElementById('game');
+  
+  let k = 100
+  for(let i = 0;i<10;i++){
+    let row_class = i%2!=0 ? "odd":"";
+    const ele = document.createElement("div");
+    ele.className = `row ${row_class}`
+    for(let j = 0;j<10;j++){
+      const temp = document.createElement("div");
+      temp.className = "square";
+      temp.innerText = k;
+      k--;
+      ele.appendChild(temp);
+    }
+    div.appendChild(ele)
+  }
+
+
+  document.getElementById('start_button').remove();
 }
 
 

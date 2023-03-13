@@ -5,35 +5,37 @@
   <% end %>
 </div>
 
-<% if @room.players.length > 1 %>
-    <%#= link_to "Start Game", start_room_path(@room), method: :post %>
-<% end %>
+<%# if @room.players.length > 1 && @room.status!="playing" %>
+    <%= link_to "Start Game", room_start_path(@room), method: :patch , remote: true , id:"start_button" %>
+<%# end %>
 
 <br>
-<%# if @room.players.length==1 %>
-    <%#= link_to "Destroy Room",room_path,method: :delete %>
-<%# end  %>
-
-<% if @room.status!="playing" %>
-  <%= link_to "Start", room_start_path(@room), method: :patch,remote: true , id:"start_button"  %>
-<% else %>
-  <%= link_to "Waiting", room_wait_path(@room), method: :patch,remote: true , id:"wait_button"  %>
-<% end %>
-
-<% if @room.status == "playing" %>
-  <div id="game">
-    <% k = 100 %>
-    <% for i in (0...10) %>
-      <% row_class = i%2!=0 ? "odd" : "" %>
-      <div class="row <%= row_class %>">
-        <% for j in (0..9) %>
-          <div class="square"><%= k %></div>
-          <% k-=1 %>
-        <% end  %>
-      </div>
-    <% end %>
-  </div>
+<% if @room.players.length==1 %>
+    <%= link_to "Destroy Room",room_path,method: :delete ,id:"delete_btn"%>
 <% end  %>
+<div id="dice-btn" class="text-center">
+  
+</div>
+
+<div id="game">
+</div>
+<!--
+ <% if @room.status == "playing" %>
+    <div id="game">
+      <% k = 100 %>
+      <% for i in (0...10) %>
+        <% row_class = i%2!=0 ? "odd" : "" %>
+        <div class="row <%= row_class %>">
+          <% for j in (0..9) %>
+            <div class="square"><%= k %></div>
+            <% k-=1 %>
+          <% end  %>
+        </div>
+      <% end %>
+    </div>
+  <% end  %>
+-->
+ 
 
 
 
