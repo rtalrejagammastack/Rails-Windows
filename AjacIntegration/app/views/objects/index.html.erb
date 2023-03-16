@@ -1,0 +1,38 @@
+
+<br>
+<br>
+<br>
+<br>
+<!-- First select element -->
+<select id="first_select">
+  <option value="1">Mobiles</option>
+  <option value="2">Fruits</option>
+</select>
+
+<!-- Second select element -->
+<select id="second_select"></select>
+
+<script>
+    $(document).ready(function() {
+        $('#first_select').on('change', function() {
+            var selected_option = $(this).val();
+
+            $.ajax({
+            url: '/objects/' + selected_option,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var options_html = '';
+                $.each(data, function(index, value) {
+                    options_html += '<option value="' + value.id + '">' + value.name + '</option>';
+                });
+                $('#second_select').html(options_html);
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                console.log('Error fetching options: ' + errorThrown);
+            }
+            });
+        });
+    });
+
+</script>

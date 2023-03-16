@@ -1,0 +1,22 @@
+<%= form_for @object do |f| %>
+  <%= f.select :first_select, options_for_select([["Option 1", 1], ["Option 2", 2]]), include_blank: true %>
+  <%= f.select :second_select, options_for_select([["Option A", 1], ["Option B", 2]]), include_blank: true %>
+<% end %>
+
+<script>
+
+  $(document).ready(function() {
+    $('#object_first_select').on('change', function() {
+      var first_select_value = $(this).val();
+      $.ajax({
+        url: '/objects/update_second_select',
+        data: { first_select_value: first_select_value },
+        dataType: 'script'
+      });
+    });
+    $('#object_second_select').on('change', function(e) {
+      e.preventDefault();
+    });
+  });
+
+</script>
