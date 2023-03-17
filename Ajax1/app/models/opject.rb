@@ -1,0 +1,2 @@
+class Opject < ApplicationRecord
+end
