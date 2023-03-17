@@ -1,5 +1,6 @@
 class ObjectsController < ApplicationController
   def index
+    
   end
   def fetch
     selected_option = params[:selected_option]

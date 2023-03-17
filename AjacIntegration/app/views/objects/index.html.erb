@@ -1,37 +1,37 @@
 
 <br>
-<br>
-<br>
-<br>
-<!-- First select element -->
-<select id="first_select">
-  <option value="1">Mobiles</option>
-  <option value="2">Fruits</option>
-</select>
+<%=form_with do |f|%>
 
-<!-- Second select element -->
-<select id="second_select"></select>
+    <%= f.label :first_select %><br />
+    <%= f.select :first_select, options_for_select(FirstOption.all.map{|option| [option.name,option.id]}),prompt: 'Select option'%>
+
+    <%= f.label :second_select %><br />
+    <%= f.select :second_select ,options_for_select("None"), prompt: 'Select first option'%>
+<% end %>
 
 <script>
     $(document).ready(function() {
         $('#first_select').on('change', function() {
             var selected_option = $(this).val();
-
-            $.ajax({
-            url: '/objects/' + selected_option,
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                var options_html = '';
-                $.each(data, function(index, value) {
-                    options_html += '<option value="' + value.id + '">' + value.name + '</option>';
+            
+            if(selected_option){
+                $.ajax({
+                    url: '/objects/' + selected_option,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var options_html = '';
+                        $.each(data, function(index, value) {
+                            options_html += '<option value="' + value.id + '">' + value.name + '</option>';
+                        });
+                        $('#second_select').html(options_html);
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        console.log('Error fetching options: ' + errorThrown);
+                    }
                 });
-                $('#second_select').html(options_html);
-            },
-            error: function(xhr, textStatus, errorThrown) {
-                console.log('Error fetching options: ' + errorThrown);
             }
-            });
+
         });
     });
 
