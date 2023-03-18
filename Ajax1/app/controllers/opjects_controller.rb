@@ -14,7 +14,7 @@ class OpjectsController < ApplicationController
     #   options = []
     # end
 
-    options = Option.where(first_option_id: selected_option)
+    options = Opject.where(first_option_id: selected_option)
     
     render json: options.to_json(xonly: [:id, :name])
     # render js: "$('#opject_second_select').html('#{j options_for_select(options)}')"
